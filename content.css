@@ -1,0 +1,256 @@
+
+/* ==== TIME-SPENT METER (bottom-right, slightly bigger) ==== */
+
+#sfm-meter-container {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 2147483647;
+
+  background: rgba(20, 20, 20, 0.92);
+  color: #ffffff;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+
+  padding: 16px 18px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  max-width: 320px;
+
+  pointer-events: auto;
+}
+
+#sfm-meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+#sfm-meter-title {
+  font-weight: 750;
+  font-size: 15px;
+}
+
+#sfm-meter-header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#sfm-meter-setting {
+  font-size: 14px;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+/* 3-dot menu button */
+#sfm-meter-menu-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+#sfm-meter-menu-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Progress bar */
+#sfm-meter-bar {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+
+#sfm-meter-fill {
+  height: 100%;
+  width: 0%;
+  background: #3cd37f; /* updated in JS */
+  border-radius: 999px;
+  transition: width 0.25s ease-out, background-color 0.25s ease-out;
+}
+
+/* Stats row (time + scrolls) */
+#sfm-meter-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.97;
+  margin-top: 2px;
+}
+
+#sfm-meter-time-label,
+#sfm-meter-scroll-label {
+  white-space: nowrap;
+}
+
+/* Hint row */
+#sfm-meter-hint {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* ==== SETTINGS PANEL (daily limit control) ==== */
+
+#sfm-meter-menu-panel {
+  position: fixed;
+  right: 22px;
+  bottom: 120px;
+  z-index: 2147483647;
+
+  background: rgba(16, 16, 16, 0.97);
+  color: #ffffff;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
+
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#sfm-meter-menu-label {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#sfm-meter-menu-input {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 2px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+}
+
+#sfm-meter-menu-input:focus {
+  border-color: #f2b94e;
+}
+
+#sfm-meter-menu-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+#sfm-meter-menu-save,
+#sfm-meter-menu-cancel {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+}
+
+#sfm-meter-menu-cancel {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+#sfm-meter-menu-save {
+  background: #f2b94e;
+  color: #161616;
+}
+
+/* ==== POP-UP: FUN FACT (center of screen, bigger) ==== */
+
+#sfm-funfact-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 2147483647;
+  max-width: 420px;
+
+  background: rgba(16, 16, 16, 0.98);
+  color: #ffffff;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  opacity: 1;
+  animation: sfm-funfact-fade-in 0.22s ease-out;
+}
+
+#sfm-funfact-text {
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Progress bar under fun-fact */
+#sfm-funfact-progress {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#sfm-funfact-progress-inner {
+  height: 100%;
+  width: 100%;
+  background: #f2b94e;
+  border-radius: 999px;
+  animation: sfm-funfact-progress-shrink 10s linear forwards;
+}
+
+/* Progress bar animation: shrink from full to zero */
+@keyframes sfm-funfact-progress-shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Fade-in animation for popup */
+@keyframes sfm-funfact-fade-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 8px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
