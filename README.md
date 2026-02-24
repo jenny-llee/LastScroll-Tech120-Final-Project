@@ -1,5 +1,5 @@
 # LastScroll
-<h1>TECH120 Final Project</h1>
+<h1>TECH120 Final Project</h1> 
 
 <h2>Group 3's Final Project for TECH120 at Purdue University</h2>
 
